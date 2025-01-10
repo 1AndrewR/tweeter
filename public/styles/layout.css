@@ -15,10 +15,14 @@ html {
  */
 
 body {
-  color: #545149;
+  color: hsl(45, 31%, 80%);
   background-color: #f4f1ec;
-  font-size: 24px;
+  font-family: "Source Sans 3", serif; /* Make sure to use the correct font name */
+  font-optical-sizing: auto;
+  font-weight: 300; /* Adjust the weight as needed, between 200 and 900 */
+  font-style: normal;
 }
+
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions

@@ -11,6 +11,21 @@ html {
   -webkit-text-size-adjust: 100%; /* 2 */
 }
 
+.source-sans-3 {
+  font-family: "Source Sans 3", serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.bungee-regular {
+  font-family: "Bungee", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
 /**
  * Remove the margin in all browsers (opinionated).
  */

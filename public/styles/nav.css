@@ -1,0 +1,32 @@
+
+
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  height: 120px;
+  background-color: #4056A1;
+  font-family: "Bungee", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #FFFFFF;
+}
+
+.navLeft {
+  font-size: 200%;
+  padding: 1.5em;
+  padding-top: 2.25em;
+}
+
+.navRight {
+  font-family: "Source Sans 3", serif;
+  display: flex;
+  padding-right: 1.5em;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.angleDown {
+  padding-left: 3.5em;
+  color: #ff0000c6;
+}
