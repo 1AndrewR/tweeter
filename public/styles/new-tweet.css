@@ -28,3 +28,12 @@ textarea {
   outline: 0;
   border-width: 0 0 2px;
 }
+
+.tweet-button:hover {
+  background-color: hwb(235 19% 37%);
+  color: blanchedalmond;
+}
+
+.over-limit {
+  color: red;
+}
