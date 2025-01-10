@@ -5,6 +5,7 @@ nav {
   display: flex;
   justify-content: space-between;
   height: 120px;
+  width: 100%;
   background-color: #4056A1;
   font-family: "Source Sans 3", serif;
   font-weight: 400;
@@ -12,6 +13,8 @@ nav {
   color: #FFFFFF;
   padding: 1.5em;
   padding-right: 1.5em;
+  position: fixed;
+  top: 0;
 }
 
 .navLeft {
