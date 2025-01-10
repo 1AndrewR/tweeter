@@ -48,9 +48,16 @@
 
     <!-- Page-specific (main) content here -->
     <main class="container">
-      <h1>Recent tweet</h1>
-      <h2>Time</h2> 
-      <p>synth poke tacos vice locavore tonx selfies venmo photo booth affogato taxidermy. Unicorn swag cronut, photo booth ennui mukbang cornhole neutra polaroid farm-to-table snackwave. Try-hard tilde aesthetic, green juice</p>
+      <section class="new-tweet">
+        <h2>Compose Tweet</h2>
+        <form action="/tweets" method="POST">
+          <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
+          <div>
+            <button type="submit">Tweet</button>
+            <output name="counter" class="counter" for="tweet-text">140</output>
+          </div>
+        </form>
+      </section>
     </main>
   </body>
 </html>
