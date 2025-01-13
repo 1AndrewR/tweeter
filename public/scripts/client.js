@@ -3,9 +3,6 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-// Fake data taken from initial-tweets.json
-// Fake data taken from initial-tweets.json
-// Fake data taken from initial-tweets.json
 $(document).ready(function() {
   // Event listener for form submission
   $('form').on('submit', function(event) {
@@ -67,7 +64,7 @@ const createTweetElement = function(tweet) {
           <i class="fa fa-retweet"></i>
           <i class="fa fa-heart"></i>
         </div>
-        <p class="tweet-time">${tweet.created_at}</p>
+        <p class="tweet-time">${timeago.format(tweet.created_at)}</p>
       </footer>
     </article>
   `);
