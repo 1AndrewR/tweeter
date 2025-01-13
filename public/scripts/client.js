@@ -11,14 +11,8 @@ $(document).ready(function() {
     // Get the tweet content
     const tweetContent = $('#tweet-text').val().trim();
 
-    // Validation checks
-    if (!tweetContent) {
-      alert('Tweet content cannot be empty.');
-      return;
-    }
-
-    if (tweetContent.length > 140) {
-      alert('Tweet content exceeds the 140 character limit.');
+    // Validate the tweet content
+    if (!isValidTweet(tweetContent)) {
       return;
     }
 
@@ -35,8 +29,19 @@ $(document).ready(function() {
       // Clear the form textarea
       $('#tweet-text').val('');
 
-      // Fetch the latest tweets and render them
-      loadTweets();
+      // Fetch the latest tweet and prepend it to the tweets container
+      $.ajax({
+        url: '/tweets',
+        method: 'GET'
+      })
+      .done(function(tweets) {
+        const latestTweet = tweets[tweets.length - 1];
+        const $tweet = createTweetElement(latestTweet);
+        $('#tweets-container').prepend($tweet);
+      })
+      .fail(function(error) {
+        console.error('Error fetching latest tweet:', error);
+      });
     })
     .fail(function(error) {
       console.error('Error submitting tweet:', error);
@@ -60,6 +65,21 @@ $(document).ready(function() {
   // Initial load of tweets
   loadTweets();
 });
+
+// Function to validate tweet content
+const isValidTweet = function(tweetContent) {
+  if (!tweetContent) {
+    alert('Tweet content cannot be empty.');
+    return false;
+  }
+
+  if (tweetContent.length > 140) {
+    alert('Tweet content exceeds the 140 character limit.');
+    return false;
+  }
+
+  return true;
+};
 
 const createTweetElement = function(tweet) {
   const $tweet = $('<article>').addClass('tweet');
