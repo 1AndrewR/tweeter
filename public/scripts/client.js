@@ -8,6 +8,20 @@ $(document).ready(function() {
   $('form').on('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
 
+    // Get the tweet content
+    const tweetContent = $('#tweet-text').val().trim();
+
+    // Validation checks
+    if (!tweetContent) {
+      alert('Tweet content cannot be empty.');
+      return;
+    }
+
+    if (tweetContent.length > 140) {
+      alert('Tweet content exceeds the 140 character limit.');
+      return;
+    }
+
     // Serialize the form data
     const serializedData = $(this).serialize();
 
