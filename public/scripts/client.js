@@ -29,19 +29,8 @@ $(document).ready(function() {
       // Clear the form textarea
       $('#tweet-text').val('');
 
-      // Fetch the latest tweet and prepend it to the tweets container
-      $.ajax({
-        url: '/tweets',
-        method: 'GET'
-      })
-      .done(function(tweets) {
-        const latestTweet = tweets[tweets.length - 1];
-        const $tweet = createTweetElement(latestTweet);
-        $('#tweets-container').prepend($tweet);
-      })
-      .fail(function(error) {
-        console.error('Error fetching latest tweet:', error);
-      });
+      // Fetch all tweets and render them
+      loadTweets();
     })
     .fail(function(error) {
       console.error('Error submitting tweet:', error);
