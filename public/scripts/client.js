@@ -4,6 +4,8 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 // Fake data taken from initial-tweets.json
+// Fake data taken from initial-tweets.json
+// Fake data taken from initial-tweets.json
 const data = [
   {
     "user": {
@@ -46,7 +48,7 @@ const createTweetElement = function(tweet) {
           <i class="fa fa-retweet"></i>
           <i class="fa fa-heart"></i>
         </div>
-        <p class="tweet-time">${new Date(tweet.created_at).toLocaleString()}</p>
+        <p class="tweet-time">${tweet.created_at}</p>
       </footer>
     </article>
   `);
@@ -57,10 +59,10 @@ const renderTweets = function(tweets) {
   // Empty the tweets container before rendering new tweets
   $('#tweets-container').empty();
 
-  // Loop through tweets and append each one to the tweets container
+  // Loop through tweets and prepend each one to the tweets container
   for (const tweet of tweets) {
     const $tweet = createTweetElement(tweet);
-    $('#tweets-container').append($tweet);
+    $('#tweets-container').prepend($tweet);
   }
 };
 
@@ -85,4 +87,3 @@ $('#tweets-container').append($tweet); // to add it to the page so we can make s
 
 // Render the tweets
 renderTweets(data);
-
