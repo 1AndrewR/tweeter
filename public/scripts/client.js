@@ -48,26 +48,32 @@ $(document).ready(function() {
 });
 
 const createTweetElement = function(tweet) {
-  const $tweet = $(`
-    <article class="tweet">
-      <header>
-        <img src="${tweet.user.avatars}" alt="Profile Picture">
-        <div>
-          <h2>${tweet.user.name}</h2>
-          <p>${tweet.user.handle}</p>
-        </div>
-      </header>
-      <p class="tweet-content">${tweet.content.text}</p>
-      <footer>
-        <div class="tweet-icons">
-          <i class="fa fa-reply"></i>
-          <i class="fa fa-retweet"></i>
-          <i class="fa fa-heart"></i>
-        </div>
-        <p class="tweet-time">${timeago.format(tweet.created_at)}</p>
-      </footer>
-    </article>
-  `);
+  const $tweet = $('<article>').addClass('tweet');
+  
+  const $header = $('<header>');
+  const $img = $('<img>').attr('src', tweet.user.avatars).attr('alt', 'Profile Picture');
+  const $div = $('<div>');
+  const $h2 = $('<h2>').text(tweet.user.name);
+  const $pHandle = $('<p>').text(tweet.user.handle);
+  
+  $div.append($h2, $pHandle);
+  $header.append($img, $div);
+  
+  const $content = $('<p>').addClass('tweet-content').text(tweet.content.text);
+  
+  const $footer = $('<footer>');
+  const $icons = $('<div>').addClass('tweet-icons');
+  const $replyIcon = $('<i>').addClass('fa fa-reply');
+  const $retweetIcon = $('<i>').addClass('fa fa-retweet');
+  const $heartIcon = $('<i>').addClass('fa fa-heart');
+  
+  $icons.append($replyIcon, $retweetIcon, $heartIcon);
+  const $time = $('<p>').addClass('tweet-time').text(timeago.format(tweet.created_at));
+  
+  $footer.append($icons, $time);
+  
+  $tweet.append($header, $content, $footer);
+  
   return $tweet;
 };
 
@@ -75,9 +81,14 @@ const renderTweets = function(tweets) {
   // Empty the tweets container before rendering new tweets
   $('#tweets-container').empty();
 
-  // Loop through tweets and prepend each one to the tweets container
-  for (const tweet of tweets) {
-    const $tweet = createTweetElement(tweet);
-    $('#tweets-container').prepend($tweet);
+  // Check if the tweets array is not empty
+  if (tweets.length > 0) {
+    // Loop through tweets and prepend each one to the tweets container
+    for (const tweet of tweets) {
+      const $tweet = createTweetElement(tweet);
+      $('#tweets-container').prepend($tweet);
+    }
+  } else {
+    console.log('No tweets to display.');
   }
 };
