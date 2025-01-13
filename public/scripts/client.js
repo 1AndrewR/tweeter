@@ -6,30 +6,49 @@
 // Fake data taken from initial-tweets.json
 // Fake data taken from initial-tweets.json
 // Fake data taken from initial-tweets.json
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd"
-    },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-];
+$(document).ready(function() {
+  // Event listener for form submission
+  $('form').on('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Serialize the form data
+    const serializedData = $(this).serialize();
+
+    // Send the serialized data to the server using AJAX
+    $.ajax({
+      url: '/tweets',
+      method: 'POST',
+      data: serializedData,
+      success: function(response) {
+        // Clear the form textarea
+        $('#tweet-text').val('');
+
+        // Fetch the latest tweets and render them
+        loadTweets();
+      },
+      error: function(error) {
+        console.error('Error submitting tweet:', error);
+      }
+    });
+  });
+
+  // Function to fetch and render tweets
+  const loadTweets = function() {
+    $.ajax({
+      url: '/tweets',
+      method: 'GET',
+      success: function(tweets) {
+        renderTweets(tweets);
+      },
+      error: function(error) {
+        console.error('Error fetching tweets:', error);
+      }
+    });
+  };
+
+  // Initial load of tweets
+  loadTweets();
+});
 
 const createTweetElement = function(tweet) {
   const $tweet = $(`
@@ -65,25 +84,3 @@ const renderTweets = function(tweets) {
     $('#tweets-container').prepend($tweet);
   }
 };
-
-// Test / driver code (temporary)
-const tweetData = {
-  "user": {
-    "name": "Newton",
-    "avatars": "https://i.imgur.com/73hZDYK.png",
-    "handle": "@SirIsaac"
-  },
-  "content": {
-    "text": "If I have seen further it is by standing on the shoulders of giants"
-  },
-  "created_at": 1461116232227
-};
-
-const $tweet = createTweetElement(tweetData);
-
-// Test / driver code (temporary)
-console.log($tweet); // to see what it looks like
-$('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
-
-// Render the tweets
-renderTweets(data);
