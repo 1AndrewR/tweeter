@@ -15,17 +15,17 @@ $(document).ready(function() {
     $.ajax({
       url: '/tweets',
       method: 'POST',
-      data: serializedData,
-      success: function(response) {
-        // Clear the form textarea
-        $('#tweet-text').val('');
+      data: serializedData
+    })
+    .done(function(response) {
+      // Clear the form textarea
+      $('#tweet-text').val('');
 
-        // Fetch the latest tweets and render them
-        loadTweets();
-      },
-      error: function(error) {
-        console.error('Error submitting tweet:', error);
-      }
+      // Fetch the latest tweets and render them
+      loadTweets();
+    })
+    .fail(function(error) {
+      console.error('Error submitting tweet:', error);
     });
   });
 
@@ -33,13 +33,13 @@ $(document).ready(function() {
   const loadTweets = function() {
     $.ajax({
       url: '/tweets',
-      method: 'GET',
-      success: function(tweets) {
-        renderTweets(tweets);
-      },
-      error: function(error) {
-        console.error('Error fetching tweets:', error);
-      }
+      method: 'GET'
+    })
+    .done(function(tweets) {
+      renderTweets(tweets);
+    })
+    .fail(function(error) {
+      console.error('Error fetching tweets:', error);
     });
   };
 
