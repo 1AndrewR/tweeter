@@ -8,8 +8,8 @@ $(document).ready(function() {
   $('form').on('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
 
-    // Clear any previous error messages
-    $('#error-message').text('');
+    // Hide the error message
+    $('#error-message').slideUp();
 
     // Get the tweet content
     const tweetContent = $('#tweet-text').val().trim();
@@ -61,12 +61,12 @@ $(document).ready(function() {
 // Function to validate tweet content
 const isValidTweet = function(tweetContent) {
   if (!tweetContent) {
-    $('#error-message').text('Tweet content cannot be empty.');
+    $('#error-message').text('Tweet content cannot be empty.').slideDown();
     return false;
   }
 
   if (tweetContent.length > 140) {
-    $('#error-message').text('Tweet content exceeds the 140 character limit.');
+    $('#error-message').text('Tweet content exceeds the 140 character limit.').slideDown();
     return false;
   }
 
