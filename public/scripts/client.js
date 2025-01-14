@@ -8,6 +8,9 @@ $(document).ready(function() {
   $('form').on('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
 
+    // Clear any previous error messages
+    $('#error-message').text('');
+
     // Get the tweet content
     const tweetContent = $('#tweet-text').val().trim();
 
@@ -58,12 +61,12 @@ $(document).ready(function() {
 // Function to validate tweet content
 const isValidTweet = function(tweetContent) {
   if (!tweetContent) {
-    alert('Tweet content cannot be empty.');
+    $('#error-message').text('Tweet content cannot be empty.');
     return false;
   }
 
   if (tweetContent.length > 140) {
-    alert('Tweet content exceeds the 140 character limit.');
+    $('#error-message').text('Tweet content exceeds the 140 character limit.');
     return false;
   }
 
@@ -104,14 +107,16 @@ const renderTweets = function(tweets) {
   // Empty the tweets container before rendering new tweets
   $('#tweets-container').empty();
 
-  // Check if the tweets array is not empty
-  if (tweets.length > 0) {
-    // Loop through tweets and prepend each one to the tweets container
-    for (const tweet of tweets) {
-      const $tweet = createTweetElement(tweet);
-      $('#tweets-container').prepend($tweet);
-    }
-  } else {
-    console.log('No tweets to display.');
+  // Loop through tweets and prepend each one to the tweets container
+  for (const tweet of tweets) {
+    const $tweet = createTweetElement(tweet);
+    $('#tweets-container').prepend($tweet);
   }
+};
+
+// Function to escape potentially unsafe text
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
 };
