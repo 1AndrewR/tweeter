@@ -16,3 +16,4 @@ This repository is the starter code for the project: Students will fork and clon
 
 - Express
 - Node 5.10.x or above
+![alt text](<Tweeter - Home Page - Google Chrome 2025-01-15 9_17_55 PM.png>) ![alt text](<Tweeter - Home Page - Google Chrome 2025-01-15 9_18_12 PM.png>) ![alt text](<Tweeter - Home Page - Google Chrome 2025-01-15 9_16_36 PM.png>) ![alt text](<Tweeter - Home Page - Google Chrome 2025-01-15 9_17_31 PM.png>)
