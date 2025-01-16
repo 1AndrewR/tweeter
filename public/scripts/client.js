@@ -1,8 +1,3 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
 $(document).ready(function() {
   // Event listener for form submission
   $('form').on('submit', function(event) {
@@ -36,6 +31,7 @@ $(document).ready(function() {
       loadTweets();
     })
     .fail(function(error) {
+      $('#error-message').text('Error submitting tweet. Please try again.').slideDown();
       console.error('Error submitting tweet:', error);
     });
   });
@@ -50,6 +46,7 @@ $(document).ready(function() {
       renderTweets(tweets);
     })
     .fail(function(error) {
+      $('#error-message').text('Error fetching tweets. Please try again.').slideDown();
       console.error('Error fetching tweets:', error);
     });
   };
@@ -76,9 +73,9 @@ const isValidTweet = function(tweetContent) {
 const createTweetElement = function(tweet) {
   const $tweet = $('<article>').addClass('tweet');
   
-  const $header = $('<header>');
+  const $header = $('<div>').addClass('tweet-header');
   const $img = $('<img>').attr('src', tweet.user.avatars).attr('alt', 'Profile Picture');
-  const $div = $('<div>');
+  const $div = $('<div>').addClass('tweet-user-info');
   const $h2 = $('<h2>').text(tweet.user.name);
   const $pHandle = $('<p>').text(tweet.user.handle);
   

@@ -3,7 +3,7 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
-html {
+ html {
   box-sizing: border-box;
 }
 *, *:before, *:after {
@@ -30,6 +30,58 @@ main {
   background-color: inherit;
   align-items: center;
   margin: 0 auto;
+}
+
+/* Styles for desktop */
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  header {
+    width: 40%;
+  }
+
+  main {
+    width: 60%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .new-tweet {
+    width: 100%;
+  }
+
+  .tweet-container {
+    width: 100%;
+  }
+}
+
+/* Styles for tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  main {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .new-tweet {
+    width: 80%;
+  }
+
+  .tweet-container {
+    width: 80%;
+  }
+}
+
+/* Center tweets under new-tweet */
+@media (max-width: 1023px) {
+  .tweet-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 

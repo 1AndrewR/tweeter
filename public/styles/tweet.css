@@ -26,12 +26,17 @@
   margin-right: 12px;
 }
 
-.tweet-header h2 {
+.tweet-user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.tweet-user-info h2 {
   margin: 0;
   font-size: 18px; /* Adjust the font size as needed */
 }
 
-.tweet-header p {
+.tweet-user-info p {
   margin: 0;
   color: #657786;
   font-size: 14px; /* Adjust the font size as needed */
