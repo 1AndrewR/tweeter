@@ -4,12 +4,13 @@
   width: inherit;
   justify-content: center;
   align-items: center;
+  padding-bottom: 1em;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  width: inherit;
+  width: 100%;
 }
 
 .formBottom {
