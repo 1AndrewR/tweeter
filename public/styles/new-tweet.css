@@ -15,7 +15,7 @@ form {
 textarea {
   outline: 0;
   border-width: 0 0 2px;
-  background-color: cornsilk; /* Set the same color as the background */
+  background-color: cornsilk; 
 }
 
 .formBottom {
@@ -39,7 +39,6 @@ button {
   color: red;
 }
 
-/* new-tweet.css */
 
 .error-message {
   display: none;

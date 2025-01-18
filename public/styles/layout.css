@@ -75,7 +75,6 @@ main {
   }
 }
 
-/* Center tweets under new-tweet */
 @media (max-width: 1023px) {
   .tweet-container {
     display: flex;

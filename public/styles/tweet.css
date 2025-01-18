@@ -2,8 +2,8 @@
   background-color: #fff;
   border: 1px solid #e1e8ed;
   border-radius: 8px;
-  width: 100%; /* Make the tweet box responsive */
-  max-width: 500px; /* Set a maximum width */
+  width: 100%; 
+  max-width: 500px;
   padding: 16px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
   margin-bottom: 16px;
@@ -35,19 +35,16 @@
 
 .tweet-user-info h2 {
   margin: 0;
-  font-size: 18px; /* Adjust the font size as needed */
-}
-
+  font-size: 18px; 
 .tweet-user-info p {
   margin: 0;
   color: #657786;
-  font-size: 14px; /* Adjust the font size as needed */
-}
+  font-size: 14px; 
 
 .tweet-content {
   font-size: 16px;
   margin-bottom: 12px;
-  border-bottom: 1px solid #e1e8ed; /* Add a line between the tweet and the icon/time line */
+  border-bottom: 1px solid #e1e8ed; 
   padding-bottom: 12px;
 }
 
