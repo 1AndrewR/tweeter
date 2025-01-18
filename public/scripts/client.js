@@ -1,20 +1,15 @@
 $(document).ready(function() {
-  // Event listener for form submission
   $('form').on('submit', function(event) {
-    event.preventDefault(); // Prevent the default form submission
+    event.preventDefault();
 
-    // Hide the error message
     $('#error-message').slideUp();
 
-    // Get the tweet content
     const tweetContent = $('#tweet-text').val().trim();
 
-    // Validate the tweet content
     if (!isValidTweet(tweetContent)) {
       return;
     }
 
-    // Serialize the form data
     const serializedData = $(this).serialize();
 
     // Send the serialized data to the server using AJAX
@@ -27,7 +22,9 @@ $(document).ready(function() {
       // Clear the form textarea
       $('#tweet-text').val('');
 
-      // Fetch all tweets and render them
+      // Reset the character counter
+      $('.counter').text(140);
+
       loadTweets();
     })
     .fail(function(error) {
@@ -51,11 +48,9 @@ $(document).ready(function() {
     });
   };
 
-  // Initial load of tweets
   loadTweets();
 });
 
-// Function to validate tweet content
 const isValidTweet = function(tweetContent) {
   if (!tweetContent) {
     $('#error-message').text('Tweet content cannot be empty.').slideDown();
@@ -71,33 +66,27 @@ const isValidTweet = function(tweetContent) {
 };
 
 const createTweetElement = function(tweet) {
-  const $tweet = $('<article>').addClass('tweet');
-  
-  const $header = $('<div>').addClass('tweet-header');
-  const $img = $('<img>').attr('src', tweet.user.avatars).attr('alt', 'Profile Picture');
-  const $div = $('<div>').addClass('tweet-user-info');
-  const $h2 = $('<h2>').text(tweet.user.name);
-  const $pHandle = $('<p>').text(tweet.user.handle);
-  
-  $div.append($h2, $pHandle);
-  $header.append($img, $div);
-  
-  const $content = $('<p>').addClass('tweet-content').text(tweet.content.text);
-  
-  const $footer = $('<footer>');
-  const $icons = $('<div>').addClass('tweet-icons');
-  const $replyIcon = $('<i>').addClass('fa fa-reply');
-  const $retweetIcon = $('<i>').addClass('fa fa-retweet');
-  const $heartIcon = $('<i>').addClass('fa fa-heart');
-  
-  $icons.append($replyIcon, $retweetIcon, $heartIcon);
-  const $time = $('<p>').addClass('tweet-time').text(timeago.format(tweet.created_at));
-  
-  $footer.append($icons, $time);
-  
-  $tweet.append($header, $content, $footer);
-  
-  return $tweet;
+  const html = `
+    <article class="tweet">
+      <div class="tweet-header">
+        <img src="${escape(tweet.user.avatars)}" alt="Profile Picture">
+        <div class="tweet-user-info">
+          <h2>${escape(tweet.user.name)}</h2>
+          <p>${escape(tweet.user.handle)}</p>
+        </div>
+      </div>
+      <p class="tweet-content">${escape(tweet.content.text)}</p>
+      <footer class="tweet-footer">
+        <div class="tweet-icons">
+          <i class="fa fa-reply"></i>
+          <i class="fa fa-retweet"></i>
+          <i class="fa fa-heart"></i>
+        </div>
+        <p class="tweet-time">${timeago.format(tweet.created_at)}</p>
+      </footer>
+    </article>
+  `;
+  return $(html);
 };
 
 const renderTweets = function(tweets) {
@@ -111,7 +100,6 @@ const renderTweets = function(tweets) {
   }
 };
 
-// Function to escape potentially unsafe text
 const escape = function (str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
