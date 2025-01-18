@@ -2,7 +2,8 @@
   background-color: #fff;
   border: 1px solid #e1e8ed;
   border-radius: 8px;
-  width: 500px;
+  width: 100%; /* Make the tweet box responsive */
+  max-width: 500px; /* Set a maximum width */
   padding: 16px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
   margin-bottom: 16px;
@@ -15,6 +16,7 @@
 
 .tweet-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 12px;
 }
@@ -45,6 +47,8 @@
 .tweet-content {
   font-size: 16px;
   margin-bottom: 12px;
+  border-bottom: 1px solid #e1e8ed; /* Add a line between the tweet and the icon/time line */
+  padding-bottom: 12px;
 }
 
 .tweet-footer {
