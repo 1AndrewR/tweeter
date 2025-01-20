@@ -77,12 +77,12 @@ const createTweetElement = function(tweet) {
       </div>
       <p class="tweet-content">${escape(tweet.content.text)}</p>
       <footer class="tweet-footer">
+        <p class="tweet-time">${timeago.format(tweet.created_at)}</p>
         <div class="tweet-icons">
           <i class="fa fa-reply"></i>
           <i class="fa fa-retweet"></i>
           <i class="fa fa-heart"></i>
         </div>
-        <p class="tweet-time">${timeago.format(tweet.created_at)}</p>
       </footer>
     </article>
   `;

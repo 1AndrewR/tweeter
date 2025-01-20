@@ -63,6 +63,11 @@
   align-items: center;
 }
 
+.tweet-icons {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .tweet-icons i {
   margin-right: 16px;
   color: #657786;
@@ -71,10 +76,11 @@
 }
 
 .tweet-icons i:hover {
-  color: #1da1f2;
+  color: #1da1f2; 
 }
 
 .tweet-time {
   color: #657786;
   font-size: 14px;
+  margin-right: 16px;
 }

@@ -9,3 +9,22 @@ header {
   background-color: hwb(0 17% 35% / 0.749);
   background-image: url(/images/dark-wood.png);
 }
+
+.avatar img {
+  border-radius: 50%;
+  width: 100%;
+  max-width: 100%; /* Set a maximum width */
+  height: auto; /* Maintain aspect ratio */
+}
+
+@media (max-width: 768px) {
+  .avatar img {
+    max-width: 75%; /* Adjust the maximum width for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .avatar img {
+    max-width: 60%; 
+  }
+}  
