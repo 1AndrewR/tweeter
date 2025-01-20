@@ -72,8 +72,8 @@ const createTweetElement = function(tweet) {
         <img src="${escape(tweet.user.avatars)}" alt="Profile Picture">
         <div class="tweet-user-info">
           <h2>${escape(tweet.user.name)}</h2>
-          <p>${escape(tweet.user.handle)}</p>
         </div>
+        <p class="tweet-handle">${escape(tweet.user.handle)}</p>
       </div>
       <p class="tweet-content">${escape(tweet.content.text)}</p>
       <footer class="tweet-footer">
